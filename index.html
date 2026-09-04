@@ -27,6 +27,8 @@
   --muted-2:#6E6458;
   --brass:#C6974C;
   --ember:#F0B968;
+  --veg:#7C9B68;
+  --nonveg:#B2543A;
 
   --display:"Bodoni Moda",Didot,"Bodoni MT","Times New Roman",serif;
   --sans:"Jost",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
@@ -282,6 +284,21 @@ ul,ol{margin:0;padding:0;list-style:none}
   .dish .desc{padding-left:0}
 }
 
+.menu-note{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
+.legend{display:inline-flex;align-items:center;gap:6px}
+.dot{display:inline-block;width:7px;height:7px;border-radius:1.5px;vertical-align:middle}
+.dot.v{background:var(--veg)}
+.dot.nv{background:var(--nonveg)}
+.nm .dot{margin-left:9px;transform:translateY(-1px)}
+
+.menu-jump{display:flex;flex-wrap:wrap;gap:9px 20px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.menu-jump a{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);text-decoration:none;transition:color .25s}
+.menu-jump a:hover,.menu-jump a:focus-visible{color:var(--brass)}
+
+.menu-group{scroll-margin-top:88px}
+.menu-group+.menu-group{margin-top:clamp(36px,5vw,58px)}
+.grp-h{font-family:var(--display);font-style:italic;font-size:clamp(19px,2.2vw,24px);color:var(--brass);letter-spacing:.01em;margin-bottom:2px}
+
 /* ---------- visit ---------- */
 .visit-grid{display:grid;gap:clamp(30px,5vw,64px);grid-template-columns:1fr}
 @media(min-width:880px){.visit-grid{grid-template-columns:1fr 1fr}}
@@ -430,48 +447,283 @@ footer{padding-block:36px 46px;border-top:1px solid var(--line);color:var(--mute
   <section class="section menu" id="menu" aria-labelledby="h-menu">
     <div class="wrap">
       <div class="sec-head rv">
-        <p class="eyebrow">Nightly</p>
-        <h2 id="h-menu">Five things, done properly</h2>
-        <p class="menu-note">Prices in rupees, taxes extra</p>
+        <p class="eyebrow">The Menu</p>
+        <h2 id="h-menu">Everything, in writing</h2>
+        <p class="menu-note">
+          <span>Prices in rupees, taxes extra</span>
+          <span class="legend"><i class="dot v" aria-hidden="true"></i>Veg</span>
+          <span class="legend"><i class="dot nv" aria-hidden="true"></i>Non-veg</span>
+        </p>
       </div>
       <div class="card rv">
-        <ol class="dishes">
-          <li class="dish">
-            <div class="dish-top">
-              <span class="idx">01</span><span class="nm">Peri Peri Fries</span>
-              <span class="lead"></span><span class="price">₹280</span>
-            </div>
-            <p class="desc">Hand-cut, twice fried, buried under cheddar and our own peri peri. Spring onion, for the pretence of virtue.</p>
-          </li>
-          <li class="dish">
-            <div class="dish-top">
-              <span class="idx">02</span><span class="nm">The Onyx Double</span>
-              <span class="lead"></span><span class="price">₹520</span>
-            </div>
-            <p class="desc">Two smashed patties, aged cheddar twice over, bacon cured downstairs. Sesame bun, no cutlery, no side.</p>
-          </li>
-          <li class="dish">
-            <div class="dish-top">
-              <span class="idx">03</span><span class="nm">Wood-Fired Pepperoni</span>
-              <span class="lead"></span><span class="price">₹640</span>
-            </div>
-            <p class="desc">Ninety seconds on the oven floor. Fior di latte, pepperoni, chestnut mushroom, green pepper, red onion.</p>
-          </li>
-          <li class="dish">
-            <div class="dish-top">
-              <span class="idx">04</span><span class="nm">Steamed Momos</span>
-              <span class="lead"></span><span class="price">₹260</span>
-            </div>
-            <p class="desc">Eight pleats each, folded to order. Chicken, ginger, spring onion, and a red chutney that bites back.</p>
-          </li>
-          <li class="dish">
-            <div class="dish-top">
-              <span class="idx">05</span><span class="nm">Chicken Lollipop Bucket</span>
-              <span class="lead"></span><span class="price">₹460</span>
-            </div>
-            <p class="desc">Twelve pieces, brined overnight, fried twice. The bucket is not a portion suggestion.</p>
-          </li>
-        </ol>
+        <nav class="menu-jump" aria-label="Jump to menu section">
+          <a href="#grp-starters">Starters</a>
+          <a href="#grp-wood">Wood-Fired</a>
+          <a href="#grp-grill">Grill &amp; Buns</a>
+          <a href="#grp-asian">Asian</a>
+          <a href="#grp-sides">Sides</a>
+          <a href="#grp-desserts">Desserts</a>
+          <a href="#grp-bar">The Bar</a>
+        </nav>
+
+        <div class="menu-group" id="grp-starters">
+          <h3 class="grp-h">Starters</h3>
+          <ol class="dishes">
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">01</span><span class="nm">Peri Peri Fries<i class="dot v" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹280</span>
+              </div>
+              <p class="desc">Hand-cut, twice fried, buried under cheddar and our own peri peri. Spring onion, for the pretence of virtue.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">02</span><span class="nm">Chicken Lollipop Bucket<i class="dot nv" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹460</span>
+              </div>
+              <p class="desc">Twelve pieces, brined overnight, fried twice. The bucket is not a portion suggestion.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">03</span><span class="nm">Smoked Chicken Wings<i class="dot nv" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹420</span>
+              </div>
+              <p class="desc">Six wings, dry-brined a day ahead, smoked over applewood, finished on the oven floor. Blue cheese on the side, not on top.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">04</span><span class="nm">Paneer Tikka Skewers<i class="dot v" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹340</span>
+              </div>
+              <p class="desc">Charred at the edges, soft through the middle. Yoghurt, ginger, a char that argues with the marinade.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">05</span><span class="nm">Charred Corn Chaat<i class="dot v" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹260</span>
+              </div>
+              <p class="desc">Grilled corn off the cob, tossed hot with lime, chilli, and roasted peanut. Eaten standing up, ideally.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">06</span><span class="nm">Crispy Chilli Baby Corn<i class="dot v" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹300</span>
+              </div>
+              <p class="desc">Batter-fried, wok-tossed in a sweet-hot glaze, sesame and spring onion on top.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="menu-group" id="grp-wood">
+          <h3 class="grp-h">Wood-Fired</h3>
+          <ol class="dishes">
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">07</span><span class="nm">Wood-Fired Pepperoni<i class="dot nv" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹640</span>
+              </div>
+              <p class="desc">Ninety seconds on the oven floor. Fior di latte, pepperoni, chestnut mushroom, green pepper, red onion.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">08</span><span class="nm">Margherita<i class="dot v" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹520</span>
+              </div>
+              <p class="desc">San Marzano, fior di latte, basil torn at the pass. The one we'd order if we were paying.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">09</span><span class="nm">Burrata &amp; Nduja<i class="dot nv" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹680</span>
+              </div>
+              <p class="desc">Burrata cracked open straight from the oven, nduja underneath, hot honey over the top.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">10</span><span class="nm">Wild Mushroom &amp; Truffle Oil<i class="dot v" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹620</span>
+              </div>
+              <p class="desc">Three mushrooms, taleggio, and a truffle oil we ration carefully.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">11</span><span class="nm">Tandoori Paneer Pizza<i class="dot v" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹580</span>
+              </div>
+              <p class="desc">Paneer marinated the way the tandoor kitchen does it, then baked, not grilled. Mint yoghurt drizzle.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="menu-group" id="grp-grill">
+          <h3 class="grp-h">Grill &amp; Buns</h3>
+          <ol class="dishes">
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">12</span><span class="nm">The Onyx Double<i class="dot nv" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹520</span>
+              </div>
+              <p class="desc">Two smashed patties, aged cheddar twice over, bacon cured downstairs. Sesame bun, no cutlery, no side.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">13</span><span class="nm">Smoked Lamb Burger<i class="dot nv" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹560</span>
+              </div>
+              <p class="desc">Lamb shoulder, smoked six hours, pulled and pressed into a patty. Pickled onion cuts through it.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">14</span><span class="nm">Grilled Chicken Burger<i class="dot nv" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹440</span>
+              </div>
+              <p class="desc">Buttermilk-brined thigh, grilled not fried, chilli mayo, iceberg for crunch.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">15</span><span class="nm">Portobello &amp; Halloumi Stack<i class="dot v" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹460</span>
+              </div>
+              <p class="desc">Grilled portobello, halloumi, roast pepper, basil aioli. Vegetarian, not an afterthought.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="menu-group" id="grp-asian">
+          <h3 class="grp-h">Asian &amp; Small Bites</h3>
+          <ol class="dishes">
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">16</span><span class="nm">Steamed Momos<i class="dot nv" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹260</span>
+              </div>
+              <p class="desc">Eight pleats each, folded to order. Chicken, ginger, spring onion, and a red chutney that bites back.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">17</span><span class="nm">Chilli Garlic Hakka Noodles<i class="dot v" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹340</span>
+              </div>
+              <p class="desc">Wok-charred, tossed hard and fast, dried red chilli and garlic doing the talking.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">18</span><span class="nm">Korean Fried Chicken Bao<i class="dot nv" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹380</span>
+              </div>
+              <p class="desc">Double-fried chicken thigh, gochujang glaze, quick pickle, steamed bao.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="menu-group" id="grp-sides">
+          <h3 class="grp-h">Sides</h3>
+          <ol class="dishes">
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">19</span><span class="nm">Truffle Parmesan Fries<i class="dot v" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹340</span>
+              </div>
+              <p class="desc">The same fries, dressed up. Truffle oil, parmesan, parsley.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">20</span><span class="nm">Garlic Butter Naan<i class="dot v" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹140</span>
+              </div>
+              <p class="desc">Torn straight from the tandoor, brushed with garlic butter and coriander.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">21</span><span class="nm">Charred Broccoli<i class="dot v" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹260</span>
+              </div>
+              <p class="desc">Blistered hot, tossed in chilli oil and toasted almonds.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="menu-group" id="grp-desserts">
+          <h3 class="grp-h">Desserts</h3>
+          <ol class="dishes">
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">22</span><span class="nm">Burnt Basque Cheesecake<i class="dot v" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹320</span>
+              </div>
+              <p class="desc">No crust, no apology. Cracked top, molten centre, served warm.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">23</span><span class="nm">Dark Chocolate Fondant<i class="dot v" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹340</span>
+              </div>
+              <p class="desc">Sixty-four percent, baked to order, ten minutes, no faster. Vanilla bean ice cream.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">24</span><span class="nm">Salted Caramel Kulfi<i class="dot v" aria-hidden="true"></i></span>
+                <span class="lead"></span><span class="price">₹280</span>
+              </div>
+              <p class="desc">Set the traditional way, salted caramel folded through, pistachio on top.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="menu-group" id="grp-bar">
+          <h3 class="grp-h">The Bar</h3>
+          <ol class="dishes">
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">B01</span><span class="nm">Craft Lager, Pint</span>
+                <span class="lead"></span><span class="price">₹280</span>
+              </div>
+              <p class="desc">Local brewery, unfiltered, served cold, not ice-cold.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">B02</span><span class="nm">House Red / White, Glass</span>
+                <span class="lead"></span><span class="price">₹380</span>
+              </div>
+              <p class="desc">Rotates monthly — ask what's open tonight.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">B03</span><span class="nm">Smoke &amp; Ember</span>
+                <span class="lead"></span><span class="price">₹550</span>
+              </div>
+              <p class="desc">Mezcal, cardamom, orange bitters, a glass smoked at the pass.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">B04</span><span class="nm">Onyx Old Fashioned</span>
+                <span class="lead"></span><span class="price">₹580</span>
+              </div>
+              <p class="desc">Bourbon, jaggery syrup, orange oil, one large cube.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">B05</span><span class="nm">Basement Sour</span>
+                <span class="lead"></span><span class="price">₹520</span>
+              </div>
+              <p class="desc">Rum, lime, egg white, a black salt rim.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">B06</span><span class="nm">Ginger &amp; Chilli Fizz</span>
+                <span class="lead"></span><span class="price">₹220</span>
+              </div>
+              <p class="desc">Fresh ginger, lime, soda, a green chilli that means it. Non-alcoholic.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-top">
+                <span class="idx">B07</span><span class="nm">Tamarind Cooler</span>
+                <span class="lead"></span><span class="price">₹200</span>
+              </div>
+              <p class="desc">Tamarind, jaggery, mint, soda over ice. Non-alcoholic.</p>
+            </li>
+          </ol>
+        </div>
       </div>
     </div>
   </section>
